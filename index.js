@@ -8,9 +8,8 @@ var methods = [
 ];
 
 methods.forEach(function(method) {
-    // Get the original gulp-git function and determine its parameter expected
-    // parameter count, so we can figure out where to pass the callback function
-    // (always last).
+    // Get the original gulp-git function and determine its expected parameter
+    // count, to figure out where to pass the callback function (always last).
     var func = git[method],
         paramCount =  func.toString().match(/^\s*function[^\(]*\(([^\)]*)/)[1]
             .split(',').length;
