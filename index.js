@@ -4,7 +4,7 @@ var git = require('gulp-git'),
 var methods = [
     'addRemote', 'removeRemote', 'addSubmodule', 'updateSubmodule',
     'push', 'pull', 'fetch', 'clone', 'tag', 'branch', 'checkout', 'merge',
-    'reset', 'clean'
+    'reset', 'clean', 'exec'
 ];
 
 methods.forEach(function(method) {
