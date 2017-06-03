@@ -6,7 +6,7 @@
   "author": "Jürg Lehni <juerg@scratchdisk.com> (http://scratchdisk.com)",
   "license": "MIT",
   "dependencies": {
-    "gulp-git": "~1.8.0",
+    "gulp-git": "~2.4.0",
     "through2": "^2.0.0"
   },
   "homepage": "https://github.com/lehni/gulp-git-streamed",
