@@ -1,6 +1,6 @@
 {
   "name": "gulp-git-streamed",
-  "version": "1.8.0",
+  "version": "2.4.0",
   "main": "index.js",
   "description": "A simple wrapper around `gulp-git` (Git plugin for gulp), making all commands return streams for better chainability.",
   "author": "Jürg Lehni <juerg@scratchdisk.com> (http://scratchdisk.com)",
