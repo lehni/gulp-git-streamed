@@ -20,7 +20,6 @@ methods.forEach(function(method) {
         return through.obj(
             function(file, enc, cb) {
                 // No transformation needed, just pass it through without errors
-                console.log('write', method);
                 cb(null, file);
             },
             function(cb) {
