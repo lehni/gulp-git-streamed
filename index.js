@@ -17,19 +17,19 @@ methods.forEach(function(method) {
         // Convert arguments to an array, and make sure we have the expected
         // amount of parameters.
         var args = Array.prototype.slice.call(arguments, 0, func.length);
-        return through.obj(function(file, enc, cb) {
-            // No transformation needed, just pass it through without errors.
-            cb(null, file);
-        }, function(cb) {
-            // Define the callback function as the last expected argument,
-            // and call the original gulp-git function with it.
-            args[func.length - 1] = function(err) {
-                if (err)
-                    this.emit('error', err);
-                cb();
-            }.bind(this);
-            func.apply(git, args);
-        });
+        return through.obj(
+            function(file, enc, cb) {
+                // No transformation needed, just pass it through without errors
+                console.log('write', method);
+                cb(null, file);
+            },
+            function(cb) {
+                // Define the callback function as the last expected argument,
+                // and call the original gulp-git function with it.
+                args[func.length - 1] = cb.bind(this);
+                func.apply(git, args);
+            }
+        );
     }
 });
 
