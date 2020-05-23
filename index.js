@@ -16,16 +16,17 @@ methods.forEach(function(method) {
     git[method] = function() {
         // Convert arguments to an array, and make sure we have the expected
         // amount of parameters.
-        var args = Array.prototype.slice.call(arguments, 0, func.length);
+        var args = Array.prototype.slice.call(arguments, 0, func.length - 1);
         return through.obj(
             function(file, enc, cb) {
-                // No transformation needed, just pass it through without errors
-                cb(null, file);
-            },
-            function(cb) {
-                // Define the callback function as the last expected argument,
-                // and call the original gulp-git function with it.
-                args[func.length - 1] = cb.bind(this);
+                // Provide a callback function for the original gulp-git method
+                // as its last expected argument, and call the through2
+                // transform callback from it when the git method completed.
+                args[func.length - 1] = function(err) {
+                    // No transformation is performed on the file, it is just
+                    // passed through.
+                    cb(err, file);
+                };
                 func.apply(git, args);
             }
         );
